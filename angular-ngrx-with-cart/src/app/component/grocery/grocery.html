@@ -8,7 +8,8 @@
   </select>
 
   <ul class="grocery-list">
-    @for(groc of (filteredGroceries$ | async)??( groceries$ | async);track groc.id){
+    <!-- // #8.2 we can use signals -->
+    @for(groc of (filteredGroceries$ && filteredGroceries$())?? groceries$();track groc.id){
     <li class="grocery-item">
       <span class="increment-button" (click)="increment(groc)">+</span>
       {{ groc.name }}
