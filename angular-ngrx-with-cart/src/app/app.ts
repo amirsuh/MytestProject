@@ -5,6 +5,7 @@ import { Bucket } from "./component/bucket/bucket";
 import { Store } from '@ngrx/store';
 import { IGrocery } from './core/models/grocery.model';
 import { selectGroceriesByType } from './core/store/selector/grocery.selectors';
+import { groceryAction } from './core/store/action/grocery.action';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ import { selectGroceriesByType } from './core/store/selector/grocery.selectors';
 export class App {
   protected readonly title = signal('angular-ngrx-with-cart');
 
-  // constructor(private store:Store<{grocery:IGrocery[]}>){
+  constructor(private store:Store<{grocery:IGrocery[]}>){}
   // //#1 should be same as app.config.ts reducer
   // // this.groceries$ =
   // this.store.select(selectGroceriesByType).subscribe(res=>{
@@ -23,4 +24,9 @@ export class App {
   // })
 
 // }
+
+ngOnInit(){
+  // #7.4 load-groceries to listen on action
+  this.store.dispatch(groceryAction.loadGroceries())
+}
 }
