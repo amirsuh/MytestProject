@@ -7,6 +7,7 @@ import {provideStoreDevtools} from '@ngrx/store-devtools'
 import { routes } from './app.routes';
 import { groceryReducer } from './core/store/reducer/grocery.reducer';
 import { bucketReducer } from './core/store/reducer/bucket.reducer';
+import { GroceryEffects } from './core/store/effect/grocery.effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,7 +19,8 @@ export const appConfig: ApplicationConfig = {
       // #3 new Reducer
       myBucket:bucketReducer
     }),
-    provideEffects(),
+    //#8 add Effect in app.config
+    provideEffects(GroceryEffects),
     provideStoreDevtools({
       maxAge: 25, // Retains last 25 states
       logOnly: !isDevMode(), // Restrict extension to log-only mode
