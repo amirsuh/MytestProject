@@ -9,7 +9,7 @@ import { groceryAction } from './core/store/action/grocery.action';
 
 @Component({
   selector: 'app-root',
-  imports: [Grocery, Bucket],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
